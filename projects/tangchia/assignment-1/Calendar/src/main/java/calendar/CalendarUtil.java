@@ -43,7 +43,7 @@ public class CalendarUtil {
 	**/
 	public static boolean IsLeapYear(int year) {
 	//if the year is a multiple of 100, the year is a leap year if its also a multiple of 400
-		if ((year % 100) == 0) {
+	/*	if ((year % 100) == 0) {
 			
 			if((year % 400) == 0) {
 				return true;
@@ -52,7 +52,7 @@ public class CalendarUtil {
 				return false;
 			}
 		}
-	
+	*/
 		//year is also leap year if multiple of 4
 		if ((year % 4) == 0) {
 			return true;

@@ -40,7 +40,7 @@ public class CalDay {
 	* Constructs an invalid CalDay object
 	*/
 	public CalDay() {
-		valid = false;
+	//	valid = false;
 	}
 	
 	/**
@@ -113,9 +113,12 @@ public class CalDay {
 	private void setAppts(LinkedList<Appt> appts) {
 		if(appts!=null)
 				this.appts = appts;
+
+
 		
-		if(appts!=null&&appts.size()==0)
-			this.appts = appts;
+	//	if(appts!=null&&appts.size()==0)
+	//		this.appts = appts;
+
 	}
 	
 	/** Sets day */

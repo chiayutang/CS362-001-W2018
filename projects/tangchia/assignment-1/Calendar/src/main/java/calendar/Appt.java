@@ -95,7 +95,7 @@ public class Appt implements  Comparable<Appt>{
     	this.startYear = startYear; 
         setTitle(title);
         setDescription(description);
-   
+
         //Set default recurring information
         int[] recurringDays = new int[0];
         setRecurrence(recurringDays, RECUR_BY_MONTHLY, 0, RECUR_NUMBER_NEVER);
@@ -118,7 +118,7 @@ public class Appt implements  Comparable<Appt>{
         	if(startMinute<0 || startMinute>59)
         		this.valid=false;
         	else
-            	if(startDay<1 || startDay>NumDaysInMonth)
+            	if(startDay<1 || startDay>31)
             		this.valid=false;
             	else
                 	if(startMonth<1 || startMonth>12)

@@ -82,8 +82,8 @@ public class CalendarMain {
          // create another appointment
          startHour=13;
 		 startMinute=30;
-		 startDay=thisDay;		
-		 startMonth=thisMonth;	
+		 startDay=thisDay;
+		 startMonth=thisMonth;
 		 startYear=thisYear;	
 		 title="Meeting Today";
 		 description="Meeting with the students.";
