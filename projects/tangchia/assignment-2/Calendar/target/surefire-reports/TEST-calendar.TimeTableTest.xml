@@ -5,7 +5,7 @@
     <property name="java.vm.version" value="9+181"/>
     <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk-9.jdk/Contents/Home/lib"/>
     <property name="gopherProxySet" value="false"/>
-    <property name="maven.multiModuleProjectDirectory" value="/Users/Amy/cs362/Calendar/Calendar"/>
+    <property name="maven.multiModuleProjectDirectory" value="/Users/Amy/desktop/CS362_git/CS362-001-W2018/projects/tangchia/assignment-2/Calendar"/>
     <property name="java.vm.vendor" value="Oracle Corporation"/>
     <property name="java.vendor.url" value="http://java.oracle.com/"/>
     <property name="guice.disable.misplaced.annotation.check" value="true"/>
@@ -16,7 +16,7 @@
     <property name="user.country" value="US"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
-    <property name="user.dir" value="/Users/Amy/CS362/Calendar/Calendar"/>
+    <property name="user.dir" value="/Users/Amy/Desktop/CS362_git/CS362-001-W2018/projects/tangchia/assignment-2/Calendar"/>
     <property name="java.vm.compressedOopsMode" value="Zero based"/>
     <property name="java.runtime.version" value="9+181"/>
     <property name="java.awt.graphicsenv" value="sun.awt.CGraphicsEnvironment"/>
@@ -63,6 +63,6 @@
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="calendar.TimeTableTest" name="test01" time="0.005"/>
-  <testcase classname="calendar.TimeTableTest" name="test02" time="0.001"/>
+  <testcase classname="calendar.TimeTableTest" name="test01" time="0.006"/>
+  <testcase classname="calendar.TimeTableTest" name="test02" time="0"/>
 </testsuite>

@@ -86,6 +86,10 @@ protected void setUp() {
       assertTrue(urlVal.isValid("http://www.google.com"));
       assertTrue(urlVal.isValid("http://www.google.com/"));
       int statusPerLine = 60;
+      //
+
+
+      //
       int printed = 0;
       if (printIndex)  {
          statusPerLine = 6;
@@ -98,7 +102,9 @@ protected void setUp() {
             ResultPair[] part = (ResultPair[]) testObjects[testPartsIndexIndex];
             testBuffer.append(part[index].item);
             expected &= part[index].valid;
+
          }
+
          String url = testBuffer.toString();
          boolean result = urlVal.isValid(url);
          if(result == true)
@@ -124,6 +130,7 @@ protected void setUp() {
       if (printStatus) {
          System.out.println();
       }
+
    }
 
    public void testValidator202() {
