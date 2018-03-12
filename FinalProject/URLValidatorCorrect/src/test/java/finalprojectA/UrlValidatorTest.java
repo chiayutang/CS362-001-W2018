@@ -58,7 +58,7 @@ protected void setUp() {
       UrlValidator urlVal = new UrlValidator(schemes, 0);
       for (int sIndex = 0; sIndex < testScheme.length; sIndex++) {
          ResultPair testPair = testScheme[sIndex];
-         boolean result = urlVal.isValidScheme(testPair.item);
+         
          assertEquals(testPair.item, testPair.valid, result);
          if (printStatus) {
             if (result == testPair.valid) {

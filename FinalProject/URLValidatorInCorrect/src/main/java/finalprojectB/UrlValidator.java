@@ -268,7 +268,7 @@ public class UrlValidator implements Serializable {
      * <p><code>ALLOW_2_SLASHES + NO_FRAGMENTS</code></p>
      * enables both of those options.
      */
-    public UrlValidator(String[] schemes, RegexValidator authorityValidator, long options) {
+        public UrlValidator(String[] schemes, RegexValidator authorityValidator, long options) {
         this.options = options;
 
         if (isOn(ALLOW_ALL_SCHEMES)) {
@@ -279,7 +279,7 @@ public class UrlValidator implements Serializable {
             }
             allowedSchemes = new HashSet<String>(schemes.length);
             for(int i=0; i < schemes.length; i++) {
-                allowedSchemes.add(schemes[i].toUpperCase(Locale.ENGLISH));
+                allowedSchemes.add(schemes[i].toUpperCase(Locale.ENGLISH)); //tolowercase
 
             }
         }
@@ -305,11 +305,14 @@ public class UrlValidator implements Serializable {
         // Check the whole url address structure
         Matcher urlMatcher = URL_PATTERN.matcher(value);
         if (!urlMatcher.matches()) {
+            System.out.println("1");
             return false;
+
         }
 
         String scheme = urlMatcher.group(PARSE_URL_SCHEME);
         if (!isValidScheme(scheme)) {
+            System.out.println("2");
             return false;
         }
 
@@ -318,6 +321,7 @@ public class UrlValidator implements Serializable {
         if ("http".equals(scheme)) {// Special case - file: allows an empty authority
             if (authority != null) {
                 if (authority.contains(":")) { // but cannot allow trailing :
+                    System.out.println("3");
                     return false;
                 }
             }
@@ -325,19 +329,23 @@ public class UrlValidator implements Serializable {
         } else { // not file:
             // Validate the authority
             if (!isValidAuthority(authority)) {
+                System.out.println("4");
                 return false;
             }
         }
 
         if (!isValidPath(urlMatcher.group(PARSE_URL_PATH))) {
+            System.out.println("5");
             return false;
         }
 
         if (!isValidQuery(urlMatcher.group(PARSE_URL_QUERY))) {
+            System.out.println("6");
             return false;
         }
 
         if (!isValidFragment(urlMatcher.group(PARSE_URL_FRAGMENT))) {
+            System.out.println("7");
             return false;
         }
 
@@ -360,10 +368,12 @@ public class UrlValidator implements Serializable {
 
         // TODO could be removed if external schemes were checked in the ctor before being stored
         if (!SCHEME_PATTERN.matcher(scheme).matches()) {
+            System.out.println("scheme1");
             return false;
         }
 
         if (isOff(ALLOW_ALL_SCHEMES) && !allowedSchemes.contains(scheme.toLowerCase(Locale.ENGLISH))) {
+            System.out.println("scheme2");
             return false;
         }
 
@@ -409,7 +419,7 @@ public class UrlValidator implements Serializable {
             // check if authority is hostname or IP address:
             // try a hostname first since that's much more likely
             DomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));
-            if (!domainValidator.isValid(hostLocation)) {
+            if (!domainValidator.isValid(hostLocation)) {                                                //
                 // try an IPv4 address
                 InetAddressValidator inetAddressValidator = InetAddressValidator.getInstance();
                 if (!inetAddressValidator.isValidInet4Address(hostLocation)) {
@@ -449,6 +459,7 @@ public class UrlValidator implements Serializable {
         }
 
         if (!PATH_PATTERN.matcher(path).matches()) {
+            System.out.println("path1");
             return false;
         }
 
@@ -457,14 +468,17 @@ public class UrlValidator implements Serializable {
             String norm = uri.normalize().getPath();
             if (norm.startsWith("/../") // Trying to go via the parent dir 
              || norm.equals("/..")) {   // Trying to go to the parent dir
+                System.out.println("path2");
                 return false;
             }
         } catch (URISyntaxException e) {
+            System.out.println("path3");
             return false;
         }
         
         int slash2Count = countToken("//", path);
         if (isOff(ALLOW_2_SLASHES) && (slash2Count > 0)) {
+            System.out.println("path4");
             return false;
         }
 
